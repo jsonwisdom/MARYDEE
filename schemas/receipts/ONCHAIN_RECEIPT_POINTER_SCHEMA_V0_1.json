@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/MARYDEE/schemas/receipts/ONCHAIN_RECEIPT_POINTER_SCHEMA_V0_1.json",
+  "title": "ONCHAIN_RECEIPT_POINTER_SCHEMA_V0_1",
+  "description": "Public-safe onchain receipt pointer schema. This schema records replayable provenance for existence and ordering only. It is not a truth oracle, custody claim, identity binding, or ownership claim.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "version",
+    "module",
+    "surface",
+    "artifact_type",
+    "git",
+    "artifact",
+    "attestation",
+    "pointer",
+    "metadata",
+    "policy",
+    "limits",
+    "replay_checklist"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ONCHAIN_RECEIPT_POINTER_V0_1"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "module": {
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "onchain_receipt_pointer_v0_1"
+      ]
+    },
+    "surface": {
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "WISDOM_FAMILY_GAME_NIGHT"
+      ]
+    },
+    "artifact_type": {
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "public_safe_receipt",
+        "continuity_doc",
+        "agent_log",
+        "marydee_scope_artifact"
+      ]
+    },
+    "git": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{7,40}$"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "ipfs_cid"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "ipfs_cid": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network",
+        "eas_schema_uid",
+        "eas_uid"
+      ],
+      "properties": {
+        "network": {
+          "const": "base"
+        },
+        "eas_schema_uid": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{64}$"
+        },
+        "eas_uid": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{64}$"
+        }
+      }
+    },
+    "pointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basename",
+        "text_record"
+      ],
+      "properties": {
+        "basename": {
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "jaywisdom.base.eth"
+          ]
+        },
+        "text_record": {
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "latest_receipt"
+          ]
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "status",
+        "privacy"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "enum": [
+            "PILOT",
+            "ACTIVE",
+            "DEPRECATED"
+          ]
+        },
+        "privacy": {
+          "const": "PUBLIC_SAFE"
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doorway_check",
+        "preflight",
+        "authority"
+      ],
+      "properties": {
+        "doorway_check": {
+          "const": "PASS"
+        },
+        "preflight": {
+          "const": "PASS"
+        },
+        "authority": {
+          "const": false
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proves",
+        "does_not_prove"
+      ],
+      "properties": {
+        "proves": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "artifact existence" },
+            { "const": "artifact ordering" },
+            { "const": "pointer continuity" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "does_not_prove": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "truth" },
+            { "const": "identity" },
+            { "const": "ownership" },
+            { "const": "custody" },
+            { "const": "intent" }
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        }
+      }
+    },
+    "replay_checklist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "git_commit_exists",
+        "sha256_matches_artifact",
+        "ipfs_cid_resolves_to_expected_bytes",
+        "eas_attestation_references_hash_and_cid",
+        "basename_text_record_points_to_receipt",
+        "authority_false_end_to_end"
+      ],
+      "properties": {
+        "git_commit_exists": { "type": "boolean" },
+        "sha256_matches_artifact": { "type": "boolean" },
+        "ipfs_cid_resolves_to_expected_bytes": { "type": "boolean" },
+        "eas_attestation_references_hash_and_cid": { "type": "boolean" },
+        "basename_text_record_points_to_receipt": { "type": "boolean" },
+        "authority_false_end_to_end": { "const": true }
+      }
+    }
+  },
+  "x_doctrine": {
+    "authority": false,
+    "people_are_not_assets": true,
+    "receipts_point_they_do_not_own": true,
+    "onchain_proves_existence_and_sequence_only": true
+  },
+  "x_verifier_statement": "Replayable provenance verified only when all checklist items pass. The pointer chain is internally consistent and demonstrates artifact existence and ordering. No conclusion is made about factual truth, identity, ownership, custody, control, or intent."
+}
