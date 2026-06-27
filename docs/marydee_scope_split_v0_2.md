@@ -110,6 +110,44 @@ Failure response:
 Execution blocked. MaryDee scope receipt missing or not PUBLIC_SAFE. No downstream verification or Bankr execution allowed.
 ```
 
+## Onchain Receipt Pointer Link
+
+`ONCHAIN_RECEIPT_POINTER_SCHEMA_V0_1` is the canonical public-safe pointer format for MaryDee receipts that may be referenced through Git, IPFS, EAS on Base, and a basename text record.
+
+Path:
+
+```text
+schemas/receipts/ONCHAIN_RECEIPT_POINTER_SCHEMA_V0_1.json
+```
+
+The pointer schema preserves the same boundary as this scope split:
+
+```text
+Authority=false.
+Onchain proves existence and sequence only.
+No private facts.
+No identity binding.
+People are not assets.
+Receipts point. They do not own.
+```
+
+Replay Machine may verify pointer consistency only when the receipt passes all checklist gates:
+
+```text
+git_commit_exists
+sha256_matches_artifact
+ipfs_cid_resolves_to_expected_bytes
+eas_attestation_references_hash_and_cid
+basename_text_record_points_to_receipt
+authority_false_end_to_end
+```
+
+Verifier language must remain limited:
+
+```text
+Replayable provenance verified. The pointer chain is internally consistent and demonstrates artifact existence and ordering. No conclusion is made about factual truth, identity, ownership, custody, control, or intent.
+```
+
 ## Receipt Status Phrases
 
 ```text
@@ -128,6 +166,9 @@ NO_PUBLIC_PUSH
 - receipt validator
 - Replay Machine parent-hash compatibility check
 - test fixtures for PUBLIC, PERSONAL, PRIVATE routing outcomes
+- onchain receipt pointer validation for `authority=false`, limits block, and replay checklist
+- batch pointer aggregation primitive
+- auto-basename rotation on pointer update
 
 ## Status
 
