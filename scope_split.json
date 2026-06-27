@@ -1,0 +1,88 @@
+{
+  "artifact": "marydee_scope_split_v0_1",
+  "repo": "MARYDEE",
+  "authority": false,
+  "default_public_lane": "MARYDEE_PUBLIC",
+  "lanes": {
+    "MARYDEE_PUBLIC": {
+      "storage": "jsonwisdom/MARYDEE public GitHub repo",
+      "public_safe_only": true,
+      "private_data_allowed": false,
+      "personal_material_allowed": false,
+      "allowed": [
+        "purpose_doctrine",
+        "public_safe_receipts",
+        "schemas",
+        "boundary_rules",
+        "non_sensitive_role_descriptions",
+        "public_repo_links"
+      ],
+      "disallowed": [
+        "addresses",
+        "birthdates",
+        "phone_numbers",
+        "private_emails",
+        "legal_details",
+        "medical_details",
+        "financial_account_details",
+        "secrets",
+        "private_family_data"
+      ]
+    },
+    "MARYDEE_PERSONAL": {
+      "storage": "controlled personal notes or future limited-access repo",
+      "public_safe_only": false,
+      "private_data_allowed": false,
+      "personal_material_allowed": true,
+      "allowed": [
+        "user_approved_continuity_notes",
+        "non_secret_preferences",
+        "project_memory_pointers",
+        "operator_context"
+      ],
+      "disallowed": [
+        "secrets",
+        "passwords",
+        "seed_phrases",
+        "private_keys",
+        "exact_addresses",
+        "birthdates",
+        "government_identifiers",
+        "medical_case_details",
+        "legal_case_details",
+        "financial_account_details"
+      ]
+    },
+    "MARYDEE_PRIVATE": {
+      "storage": "encrypted vault, local encrypted file, or explicitly private storage controlled by operator",
+      "public_safe_only": false,
+      "private_data_allowed": true,
+      "personal_material_allowed": true,
+      "never_commit_to_public_repo": true,
+      "allowed": [
+        "legal_records",
+        "medical_records",
+        "exact_addresses",
+        "phone_numbers",
+        "birthdates",
+        "identity_documents",
+        "financial_documents",
+        "family_sensitive_facts",
+        "emergency_contact_details"
+      ],
+      "disallowed_in_public_repo": true
+    }
+  },
+  "routing_rule": [
+    "If it contains secrets, addresses, private identifiers, legal, medical, financial, or family-sensitive facts, route to MARYDEE_PRIVATE and do not commit publicly.",
+    "If it contains personal continuity details not meant for the public, route to MARYDEE_PERSONAL.",
+    "If it is public-safe doctrine, schema, manifest, or boundary language, route to MARYDEE_PUBLIC."
+  ],
+  "status_phrases": [
+    "PUBLIC_SAFE",
+    "PERSONAL_HOLD",
+    "PRIVATE_DO_NOT_POST",
+    "SHOW_THE_RECEIPTS_NOT_THE_SECRETS"
+  ],
+  "status": "SCOPE_SPLIT_DRAFT_LOCKED"
+}
