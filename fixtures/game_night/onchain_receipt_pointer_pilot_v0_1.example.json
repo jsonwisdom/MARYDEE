@@ -1,0 +1,56 @@
+{
+  "schema": "ONCHAIN_RECEIPT_POINTER_V0_1",
+  "version": "0.1",
+  "module": "onchain_receipt_pointer_v0_1",
+  "surface": "WISDOM_FAMILY_GAME_NIGHT",
+  "artifact_type": "public_safe_receipt",
+  "git": {
+    "repository": "jsonwisdom/MARYDEE",
+    "commit": "ffa7a9bbe7482ba1e66b4cdac4e781f965320cf2"
+  },
+  "artifact": {
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "ipfs_cid": "PENDING_IPFS_CID"
+  },
+  "attestation": {
+    "network": "base",
+    "eas_schema_uid": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eas_uid": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "pointer": {
+    "basename": "jaywisdom.base.eth",
+    "text_record": "latest_receipt"
+  },
+  "metadata": {
+    "created_at": "2026-06-27T00:00:00Z",
+    "status": "PILOT",
+    "privacy": "PUBLIC_SAFE"
+  },
+  "policy": {
+    "doorway_check": "PASS",
+    "preflight": "PASS",
+    "authority": false
+  },
+  "limits": {
+    "proves": [
+      "artifact existence",
+      "artifact ordering",
+      "pointer continuity"
+    ],
+    "does_not_prove": [
+      "truth",
+      "identity",
+      "ownership",
+      "custody",
+      "intent"
+    ]
+  },
+  "replay_checklist": {
+    "git_commit_exists": true,
+    "sha256_matches_artifact": false,
+    "ipfs_cid_resolves_to_expected_bytes": false,
+    "eas_attestation_references_hash_and_cid": false,
+    "basename_text_record_points_to_receipt": false,
+    "authority_false_end_to_end": true
+  }
+}
