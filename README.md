@@ -4,6 +4,12 @@ Parent continuity surface for the JSONWisdom family project.
 
 **Authority:** false
 
+## Start Here
+
+- [`MARYDEE_JOYSPACE.md`](MARYDEE_JOYSPACE.md) — public front porch for Ask MaryDee
+- [`docs/ask_marydee_purpose_receipt_v0_1.md`](docs/ask_marydee_purpose_receipt_v0_1.md) — canonical L0 purpose receipt
+- [`scope_split.json`](scope_split.json) — machine-readable scope routing
+
 ## Role
 
 - Family guidance documentation
@@ -56,6 +62,7 @@ SHOW_THE_RECEIPTS_NOT_THE_SECRETS
 
 ## What lives here
 
+- `MARYDEE_JOYSPACE.md` — public front porch for Ask MaryDee
 - `index.json` — machine-readable role and links
 - `scope_split.json` — machine-readable public/personal/private routing manifest
 - `docs/ask_marydee_purpose_receipt_v0_1.md` — canonical L0 purpose receipt
