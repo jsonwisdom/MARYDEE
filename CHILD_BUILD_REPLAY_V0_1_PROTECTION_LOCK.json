@@ -1,0 +1,119 @@
+{
+  "record_type": "CHILD_BUILD_REPLAY_PROTECTION_LOCK",
+  "version": "0.1.0",
+  "status": "PROTECTION_LOCKED_DRAFT",
+  "parent_artifact": {
+    "repository": "jsonwisdom/MARYDEE",
+    "path": "CO_PARENTING_KID_WISDOM_V0_1.json",
+    "latest_known_commit": "958b57d959d33b48827ac96d72a88365b5bc643e"
+  },
+  "purpose": "Preserve a child-centered, append-only intake and replay boundary for developmental context without diagnosis, parental-fitness rulings, legal authority, identity exposure, or silent historical mutation.",
+  "protections": {
+    "child_identity": "MINIMIZED_OR_PSEUDONYMOUS",
+    "private_details": "NEED_TO_KNOW_ONLY",
+    "child_voice": "AGE_APPROPRIATE",
+    "consent": "RECORDED_SCOPED_REVOCABLE",
+    "observation_not_interpretation": true,
+    "speculation_explicitly_labeled": true,
+    "diagnosis": "PROHIBITED",
+    "parental_fitness_ruling": "PROHIBITED",
+    "legal_authority": "NONE"
+  },
+  "preservation_policy": {
+    "history": "APPEND_ONLY",
+    "silent_replacement": "PROHIBITED",
+    "sensitive_entry_handling": {
+      "flag": "SENSITIVE_RESTRICTED",
+      "display_redaction": true,
+      "audit_receipt_required": true,
+      "original_record_preserved": true,
+      "restoration_or_scope_change_requires_authorized_reconsent": true
+    }
+  },
+  "intake_schema": {
+    "record_type": "CHILD_BUILD_REPLAY_INTAKE",
+    "child_id": "PSEUDONYMOUS_ID",
+    "recorded_by": "ROLE_NOT_NAME",
+    "recorded_at": "RFC3339_TIMESTAMP",
+    "timeline": [],
+    "observations": {
+      "care": [],
+      "learning": [],
+      "support_network": [],
+      "environment_and_time": []
+    },
+    "child_voice": [],
+    "reported_concerns": [],
+    "immediate_safety_risk": false,
+    "source_refs": [],
+    "speculation": [],
+    "missing_context": [],
+    "requested_outcome": ""
+  },
+  "entry_requirements": [
+    "WHO_OBSERVED_IT",
+    "WHEN_IT_OCCURRED",
+    "EXACT_WORDS_OR_FACTS",
+    "ANONYMIZED_SOURCE_LOCATION",
+    "VERIFICATION_STATUS",
+    "WHAT_REMAINS_UNKNOWN"
+  ],
+  "verification_statuses": [
+    "VERIFIED",
+    "UNVERIFIED",
+    "TRIANGULATED",
+    "MISSING",
+    "CONFLICTING",
+    "SUBJECT_REPORTED",
+    "DERIVED"
+  ],
+  "safety_gate": {
+    "trigger": "IMMEDIATE_SAFETY_RISK_REPORTED",
+    "effect": [
+      "HARD_STOP_AUTOMATED_REPLAY",
+      "PRESERVE_INPUT",
+      "REQUEST_APPROPRIATE_HUMAN_SAFETY_REVIEW"
+    ],
+    "machine_escalation_authority": false,
+    "diagnostic_effect": "NONE",
+    "legal_effect": "NONE"
+  },
+  "system_boundaries": {
+    "may": [
+      "PRESERVE",
+      "ORGANIZE",
+      "BUILD_TIMELINE",
+      "SEPARATE_OBSERVATION_FROM_SPECULATION",
+      "IDENTIFY_MISSING_CONTEXT",
+      "SURFACE_CONFLICTS",
+      "GENERATE_NONBINDING_SUMMARIES"
+    ],
+    "may_not": [
+      "DIAGNOSE_CHILD",
+      "DECLARE_PARENT_UNFIT",
+      "CREATE_OR_CHANGE_CUSTODY_RIGHTS",
+      "INFER_LOVE_OR_INTENT_AS_FACT",
+      "ALTER_COURT_ORDERS",
+      "ASSIGN_GUILT",
+      "EXECUTE_PUNISHMENT",
+      "SILENTLY_DELETE_OR_REWRITE_HISTORY"
+    ]
+  },
+  "invariants": [
+    "CHILD_IS_PROTECTED_CENTER",
+    "NO_CHILD_IS_PROPERTY",
+    "NO_MACHINE_OUTPUT_CREATES_AUTHORITY",
+    "EXISTING_LAWFUL_ORDERS_PREVAIL",
+    "CHILD_SAFETY_OVERRIDES_PROCESS_DELAY",
+    "RECORDED_DISAGREEMENT_IS_VALID",
+    "NO_CHILD_USED_AS_MESSENGER_WEAPON_OR_EVIDENCE_GATHERING_TOOL",
+    "NO_MUTATION_OF_HISTORICAL_RECORDS"
+  ],
+  "authorization": {
+    "design_and_test_changes": "JAY_AUTO_APPROVE_DEVELOPMENT",
+    "real_child_data_ingestion": "AUTHORIZED_GUARDIAN_OR_STEWARD_REQUIRED",
+    "public_disclosure": "EXPLICIT_HUMAN_APPROVAL_REQUIRED",
+    "onchain_anchor": "EXPLICIT_HUMAN_SIGNATURE_REQUIRED"
+  },
+  "authority_created": false
+}
