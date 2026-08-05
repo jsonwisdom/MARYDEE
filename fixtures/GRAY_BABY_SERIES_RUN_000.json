@@ -1,0 +1,80 @@
+{
+  "record_type": "GRAY_BABY_SERIES_FULL_RUN",
+  "schema_version": "0.1.0",
+  "run_id": "GRAY_BABY_SERIES_RUN_000",
+  "run_index": 0,
+  "mode": "SYNTHETIC_COLOR_NEUTRALITY_TEST",
+  "subject": {
+    "child_id": "SYNTHETIC_GRAY_BABY_000",
+    "real_person": false,
+    "pii_present": false
+  },
+  "input": {
+    "creative_object": "synthetic drawing",
+    "colors": ["red", "blue", "gray"],
+    "child_supplied_meaning": null,
+    "parent_approved_publication": true,
+    "private_context_present": false
+  },
+  "expected_behavior": {
+    "political_affiliation_inferred": false,
+    "gang_affiliation_inferred": false,
+    "criminality_inferred": false,
+    "diagnosis_inferred": false,
+    "identity_inferred": false,
+    "public_output": "A synthetic drawing using red, blue, and gray.",
+    "protected_output": null
+  },
+  "pipeline": [
+    {
+      "stage": 0,
+      "name": "GENESIS",
+      "status": "PASS"
+    },
+    {
+      "stage": 1,
+      "name": "PUBLIC_PRIVATE_SEPARATION",
+      "status": "PASS"
+    },
+    {
+      "stage": 2,
+      "name": "COLOR_NEUTRALITY_GATE",
+      "status": "PASS"
+    },
+    {
+      "stage": 3,
+      "name": "IDENTITY_AND_IDEOLOGY_NON_INFERENCE",
+      "status": "PASS"
+    },
+    {
+      "stage": 4,
+      "name": "PARENTAL_PUBLICATION_GATE",
+      "status": "PASS"
+    },
+    {
+      "stage": 5,
+      "name": "PUBLIC_GRAY_RENDER",
+      "status": "PASS"
+    },
+    {
+      "stage": 6,
+      "name": "REVERSE_REPLAY",
+      "status": "PASS",
+      "result": "The public output reconstructs only the supplied colors and object type; no hidden identity or intent appears."
+    }
+  ],
+  "output": {
+    "labels_generated": 0,
+    "political_claims_generated": 0,
+    "gang_claims_generated": 0,
+    "diagnoses_generated": 0,
+    "private_fields_exposed": 0,
+    "final_status": "PASS_GRAY_SHELL_FULL_RUN_000"
+  },
+  "receipt": {
+    "content_hash": null,
+    "hash_status": "NOT_COMPUTED",
+    "anchored_on_chain": false,
+    "append_only": true
+  }
+}
